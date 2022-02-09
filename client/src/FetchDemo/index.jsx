@@ -36,6 +36,7 @@ const FetchDemo = () => {
       const res = await api.post("/task/createTask", {
         description: description,
       });
+      handleGet();
       console.log(res.data);
     } catch (e) {
       alert(e);
