@@ -57,9 +57,14 @@ const FetchDemo = () => {
       const res = await api.put(`/task/updateTask`, {
         taskId: id,
         description: description,
-        compeleted: compeleted,
+        completed: compeleted,
       });
       console.log(res.data);
+
+      handleGet();
+      setTaskId("");
+      setEditDescription("");
+      setCompleted(false);
     } catch (e) {
       alert(e);
     }
