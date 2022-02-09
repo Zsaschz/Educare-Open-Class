@@ -4,6 +4,7 @@ import cors from "cors";
 import morgan from "morgan";
 import { authRouter } from "./routers/authRouter";
 import { articleRouter } from "./routers/articleRouter";
+import { taskRouter } from "./routers/taskRouter";
 
 export const app = express();
 const api = Router();
@@ -23,3 +24,4 @@ api.use("/v1", v1);
 
 v1.use("/auth", authRouter);
 v1.use("/article", articleRouter);
+v1.use("/task", taskRouter);

@@ -129,6 +129,14 @@ export const articleNotFoundError = (): ApiError => {
   );
 };
 
+export const taskNotFoundError = (): ApiError => {
+  return new ApiError(
+    NOT_FOUND,
+    "Task Error",
+    "There is no task with given id."
+  );
+};
+
 export const forumNotFoundEror = (): ApiError => {
   return new ApiError(
     NOT_FOUND,
