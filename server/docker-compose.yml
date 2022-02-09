@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  server:
+    container_name: server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+    ports:
+      - 5000:5000
+    restart: always
+    environment:
+      DATABASE_URL: postgres://petbooks:verysecurepassword@postgres:5432/petbooks
+      JWT_SECRET: verysecret
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: db
+    image: postgres:13.3-alpine
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_USER: petbooks
+      POSTGRES_PASSWORD: verysecurepassword
+      POSTGRES_DB: petbooks
+    ports:
+      - 5432:5432
+
+volumes:
+  db-data:
