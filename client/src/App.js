@@ -4,17 +4,22 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import StateDemo from "./StateDemo";
 import AuthDemo from "./AuthDemo";
 import FetchDemo from "./FetchDemo";
+import { createContext } from "react";
+
+export const ThemeContext = createContext({ textColor: "white" });
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/stateDemo" element={<StateDemo />} />
-          <Route path="/fetchDemo" element={<FetchDemo />} />
-          <Route path="/authDemo" element={<AuthDemo />} />
-        </Routes>
-      </Router>
+      <ThemeContext.Provider value={{ textColor: "black" }}>
+        <Router>
+          <Routes>
+            <Route path="/stateDemo" element={<StateDemo />} />
+            <Route path="/fetchDemo" element={<FetchDemo />} />
+            <Route path="/authDemo" element={<AuthDemo />} />
+          </Routes>
+        </Router>
+      </ThemeContext.Provider>
     </div>
   );
 }

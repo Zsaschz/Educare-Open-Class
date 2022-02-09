@@ -1,40 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "../App";
 import useScrollPosition from "../hooks/scrollPosition";
-
-const EffectDemo = () => {
-  const [loading, setLoading] = useState(false);
-
-  const toggleLoading = () => {
-    setLoading(!loading);
-  };
-
-  useEffect(() => {
-    setLoading(true);
-    console.log("Effect Run");
-    setLoading(false);
-    return () => {
-      console.log("Unmounting");
-    };
-  }, []);
-
-  return (
-    <div>
-      <div className="text-2xl mt-2 text-white">EFFECT DEMO</div>
-      <div> {loading ? "loading" : "not loading"}</div>
-      <button
-        onClick={toggleLoading}
-        className="bg-white text-black py-2 px-3 rounded-md mt-2"
-      >
-        Toggle Loading
-      </button>
-    </div>
-  );
-};
 
 const StateDemo = () => {
   const [counter, setCounter] = useState(0);
   const [show, setShow] = useState(false);
-  const x = useScrollPosition();
 
   const handleIncrement = () => {
     setCounter(counter + 1);
@@ -71,15 +41,67 @@ const StateDemo = () => {
           className="bg-white text-black py-2 px-3 rounded-md mx-2 mt-8"
           onClick={toggleShow}
         >
-          Toggle Show
+          Toggle Effect Demo
         </button>
         {show ? <EffectDemo /> : ""}
-      </div>
-      <div className="h-screen bg-slate-800">
-        <div className="text-5xl fixed left-0 bottom-0 text-white">{x}</div>
       </div>
     </>
   );
 };
 
 export default StateDemo;
+
+const EffectDemo = () => {
+  const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const toggleShow = () => {
+    setShow(!show);
+  };
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   console.log("Effect Run");
+  //   setLoading(false);
+  // }); //Run multiple times
+
+  useEffect(() => {
+    setLoading(true);
+    console.log("Effect Run");
+    setLoading(false);
+    return () => {
+      console.log("Unmounting");
+    };
+  }, []);
+
+  return (
+    <div>
+      <div className="bg-white px-3 py-4 mt-5 rounded-md">
+        <div className="text-2xl mt-2 text-black">useEffect Demo</div>
+        <button
+          onClick={toggleShow}
+          className="bg-slate-800 text-white py-2 px-3 rounded-md mt-2"
+        >
+          Toggle Show Scroll
+        </button>
+      </div>
+      {show ? <ScrollPosition /> : ""}
+    </div>
+  );
+};
+
+const ScrollPosition = () => {
+  const x = useScrollPosition();
+  const { textColor } = useContext(ThemeContext);
+
+  return (
+    <div className="h-screen bg-slate-800">
+      <div className={`text-5xl text-${textColor} mt-5`}>
+        Text Color is "{textColor}"
+      </div>
+      <div className={`text-5xl fixed left-0 bottom-0 text-${textColor}`}>
+        {x}
+      </div>
+    </div>
+  );
+};
