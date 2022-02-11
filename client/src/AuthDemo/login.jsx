@@ -15,10 +15,7 @@ const Login = () => {
         password: password,
       });
       if (res.status === 200) {
-        const token = res.data.token;
-        const user = res.data.user;
-        localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(user));
+        // TODO: Save Token and User on localstorage
         alert("Login successfull");
         setTimeout(() => {
           navigate("/article");

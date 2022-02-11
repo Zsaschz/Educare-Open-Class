@@ -3,15 +3,15 @@ import { ThemeContext } from "../App";
 import useScrollPosition from "../hooks/scrollPosition";
 
 const StateDemo = () => {
-  const [counter, setCounter] = useState(0);
+  // TODO: Create Counter State
   const [show, setShow] = useState(false);
 
   const handleIncrement = () => {
-    setCounter(counter + 1);
+    // TODO
   };
 
   const handleDecrement = () => {
-    setCounter(counter - 1);
+    // TODO
   };
 
   const toggleShow = () => {
@@ -22,7 +22,8 @@ const StateDemo = () => {
     <>
       <div className="min-h-screen w-full bg-slate-800 text-white flex flex-col justify-center items-center">
         <div className="text-2xl mb-2">State Demo</div>
-        <div className="text-5xl">{counter}</div>
+        {/* TODO */}
+        <div className="text-5xl">"0"</div>
         <div className="my-2">
           <button
             className="bg-white text-black py-2 px-3 rounded-md mx-2"
@@ -59,20 +60,7 @@ const EffectDemo = () => {
     setShow(!show);
   };
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   console.log("Effect Run");
-  //   setLoading(false);
-  // }); //Run multiple times
-
-  useEffect(() => {
-    setLoading(true);
-    console.log("Effect Run");
-    setLoading(false);
-    return () => {
-      console.log("Unmounting");
-    };
-  }, []);
+  // TODO: Implement useEffect
 
   return (
     <div>
@@ -91,14 +79,18 @@ const EffectDemo = () => {
 };
 
 const ScrollPosition = () => {
-  const x = useScrollPosition();
-  const { textColor } = useContext(ThemeContext);
+  // TODO: Consume theme context
+  const textColor = "white";
+
+  // TODO: Use Custom Hook
+  const x = 0;
 
   return (
     <div className="h-screen bg-slate-800">
       <div className={`text-5xl text-${textColor} mt-5`}>
         Text Color is "{textColor}"
       </div>
+      {/* TODO */}
       <div className={`text-5xl fixed left-0 bottom-0 text-${textColor}`}>
         {x}
       </div>

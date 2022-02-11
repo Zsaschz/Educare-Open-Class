@@ -7,21 +7,21 @@ import FetchDemo from "./FetchDemo";
 import ProtectedForm from "./AuthDemo/form";
 import { createContext } from "react";
 
-export const ThemeContext = createContext({ textColor: "white" });
+// TODO: Create theme context
+export const ThemeContext = null;
 
 function App() {
   return (
     <div className="App">
-      <ThemeContext.Provider value={{ textColor: "black" }}>
-        <Router>
-          <Routes>
-            <Route path="/stateDemo" element={<StateDemo />} />
-            <Route path="/fetchDemo" element={<FetchDemo />} />
-            <Route path="/authDemo" element={<AuthDemo />} />
-            <Route path="/article" element={<ProtectedForm />} />
-          </Routes>
-        </Router>
-      </ThemeContext.Provider>
+      {/* TODO: Wrap in context */}
+      <Router>
+        <Routes>
+          <Route path="/stateDemo" element={<StateDemo />} />
+          <Route path="/fetchDemo" element={<FetchDemo />} />
+          <Route path="/authDemo" element={<AuthDemo />} />
+          <Route path="/article" element={<ProtectedForm />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

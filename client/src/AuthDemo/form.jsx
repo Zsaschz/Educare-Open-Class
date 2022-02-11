@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import api from "../api";
 
 const ProtectedForm = () => {
@@ -7,19 +7,26 @@ const ProtectedForm = () => {
 
   const handlePost = async (e) => {
     e.preventDefault();
-    console.log(api.defaults.headers.common["Authorization"]);
     try {
-      const res = await api.post("/article/createArticle", {
-        title: title,
-        content: content,
-      });
-      if (res.status === 200) {
-        alert("Article Created");
-      }
+      // TODO
     } catch (e) {
       alert(e);
     }
   };
+
+  const handleGet = async () => {
+    try {
+      const res = await api.get("/article/myArticle");
+      console.log(res.data);
+      alert("Article Created");
+    } catch (e) {
+      alert(e);
+    }
+  };
+
+  useEffect(() => {
+    // handleGet();
+  }, []);
 
   return (
     <div className="min-h-screen w-screen bg-slate-800 text-white flex justify-around items-center">

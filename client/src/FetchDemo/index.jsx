@@ -5,70 +5,22 @@ const FetchDemo = () => {
   const [description, setDescription] = useState("");
   const [taskList, setTaskList] = useState([]);
 
-  const handleGet = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/api/v1/task/allTask");
-      console.log(res);
-      const jsonData = await res.json();
-      console.log(jsonData);
-      setTaskList(jsonData);
-    } catch (e) {
-      alert(e);
-    }
+  const handleGet = () => {
+    // TODO
   };
 
-  const handlePost = async (e) => {
+  const handlePost = (e) => {
     e.preventDefault();
-    try {
-      // const res = await fetch("http://localhost:5000/api/v1/task/createTask", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     description: description,
-      //   }),
-      // });
-      // const jsonData = await res.json();
-      // handleGet();
-      // console.log(jsonData);
-
-      const res = await api.post("/task/createTask", {
-        description: description,
-      });
-      handleGet();
-      console.log(res.data);
-    } catch (e) {
-      alert(e);
-    }
+    // TODO
     setDescription("");
   };
 
-  const handleDelete = async (id) => {
-    try {
-      await api.delete(`/task/deleteTask/${id}`);
-      handleGet();
-    } catch (e) {
-      alert(e);
-    }
+  const handleDelete = (id) => {
+    // TODO
   };
 
-  const handlePut = async (id, description, compeleted) => {
-    try {
-      const res = await api.put(`/task/updateTask`, {
-        taskId: id,
-        description: description,
-        completed: compeleted,
-      });
-      console.log(res.data);
-
-      handleGet();
-      setTaskId("");
-      setEditDescription("");
-      setCompleted(false);
-    } catch (e) {
-      alert(e);
-    }
+  const handlePut = (id, description, compeleted) => {
+    // TODO
   };
 
   useEffect(() => {
