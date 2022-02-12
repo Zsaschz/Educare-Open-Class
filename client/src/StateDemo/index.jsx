@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { ThemeContext } from "../App";
 import useScrollPosition from "../hooks/scrollPosition";
 
@@ -85,6 +85,14 @@ const ScrollPosition = () => {
   // TODO: Use Custom Hook
   const x = 0;
 
+  // TODO: Input Ref
+  const inputEl = null;
+
+  const onButtonClick = () => {
+    // `current` points to the mounted text input element
+    inputEl.current.focus();
+  };
+
   return (
     <div className="h-screen bg-slate-800">
       <div className={`text-5xl text-${textColor} mt-5`}>
@@ -94,6 +102,9 @@ const ScrollPosition = () => {
       <div className={`text-5xl fixed left-0 bottom-0 text-${textColor}`}>
         {x}
       </div>
+      {/* TODO */}
+      <input type="text" className="mt-2" />
+      <button onClick={onButtonClick}>Focus the input</button>
     </div>
   );
 };
